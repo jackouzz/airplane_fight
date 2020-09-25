@@ -2,6 +2,8 @@ import pygame
 
 pygame.init()
 
+# game code
+
 print("game code...")
-#Githubdesktop测试
+
 pygame.quit()
