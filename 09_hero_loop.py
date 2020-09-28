@@ -19,7 +19,7 @@ while True:
 
     hero_rect.y -= 1
 
-    if hero_rect.y <= 0:
+    if hero_rect.y <= -126:
         hero_rect.y = 700
 
     screen.blit(bg, (0, 0))
