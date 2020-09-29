@@ -15,9 +15,8 @@ class PlaneGame(object):
         self.__create_sprites()
 
     def __create_sprites(self):
-        bg1 = Background("./images/background.png")
-        bg2 = Background("./images/background.png")
-        bg2.rect.y = -bg2.rect.height
+        bg1 = Background()
+        bg2 = Background(True)
 
         self.back_group = pygame.sprite.Group(bg1, bg2)
 
