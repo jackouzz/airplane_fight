@@ -17,3 +17,9 @@ class GameSprite(pygame.sprite.Sprite):
 
     def update(self):
         self.rect.y += self.speed
+
+class Background(GameSprite):
+    def update(self):
+        super().update()
+        if self.rect.y >= SCREEN_RECT.height:
+            self.rect.y = -self.rect.height
