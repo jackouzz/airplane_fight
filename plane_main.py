@@ -15,7 +15,11 @@ class PlaneGame(object):
         self.__create_sprites()
 
     def __create_sprites(self):
-        pass
+        bg1 = Background("./images/background.png")
+        bg2 = Background("./images/background.png")
+        bg2.rect.y = -bg2.rect.height
+
+        self.back_group = pygame.sprite.Group(bg1, bg2)
 
     def start_game(self):
         print("start game...")
@@ -42,7 +46,8 @@ class PlaneGame(object):
         pass
 
     def __update_sprites(self):
-        pass
+        self.back_group.update()
+        self.back_group.draw(self.screen)
 
     @staticmethod
     def __game_over():
