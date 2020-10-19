@@ -16,12 +16,13 @@ class PlaneGame(object):
         # 4. set timer event,create enemy 1s
         pygame.time.set_timer(CREATE_ENEMY_EVENT, 1000)
 
-
     def __create_sprites(self):
         bg1 = Background()
         bg2 = Background(True)
 
         self.back_group = pygame.sprite.Group(bg1, bg2)
+
+        self.enemy_group = pygame.sprite.Group()
 
     def start_game(self):
         print("start game...")
@@ -45,6 +46,8 @@ class PlaneGame(object):
                 PlaneGame.__game_over()
             elif event.type == CREATE_ENEMY_EVENT:
                 print("enemy show up")
+                enemy = Enemy()
+                self.enemy_group.add(enemy)
 
     def __check_collide(self):
         pass
@@ -52,6 +55,9 @@ class PlaneGame(object):
     def __update_sprites(self):
         self.back_group.update()
         self.back_group.draw(self.screen)
+
+        self.enemy_group.update()
+        self.enemy_group.draw(self.screen)
 
     @staticmethod
     def __game_over():
