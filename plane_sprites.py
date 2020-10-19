@@ -6,6 +6,9 @@ SCREEN_RECT = pygame.Rect(0, 0, 480, 700)
 # frequency
 FRAME_PER_SEC = 60
 
+# create enemy timer
+CREATE_ENEMY_EVENT = pygame.USEREVENT
+
 
 class GameSprite(pygame.sprite.Sprite):
     def __init__(self, image_name, speed=1):

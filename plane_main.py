@@ -13,6 +13,9 @@ class PlaneGame(object):
         self.clock = pygame.time.Clock()
         # 3. call private methods ,create sprites and their group
         self.__create_sprites()
+        # 4. set timer event,create enemy 1s
+        pygame.time.set_timer(CREATE_ENEMY_EVENT, 1000)
+
 
     def __create_sprites(self):
         bg1 = Background()
@@ -40,6 +43,8 @@ class PlaneGame(object):
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 PlaneGame.__game_over()
+            elif event.type == CREATE_ENEMY_EVENT:
+                print("enemy show up")
 
     def __check_collide(self):
         pass
