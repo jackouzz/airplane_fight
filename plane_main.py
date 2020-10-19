@@ -24,6 +24,9 @@ class PlaneGame(object):
 
         self.enemy_group = pygame.sprite.Group()
 
+        self.hero = Hero()
+        self.hero_group = pygame.sprite.Group(self.hero)
+
     def start_game(self):
         print("start game...")
         while True:
@@ -45,9 +48,18 @@ class PlaneGame(object):
             if event.type == pygame.QUIT:
                 PlaneGame.__game_over()
             elif event.type == CREATE_ENEMY_EVENT:
-                print("enemy show up")
+                # print("enemy show up")
                 enemy = Enemy()
                 self.enemy_group.add(enemy)
+            # elif event.type == pygame.KEYDOWN and event.key == pygame.K_RIGHT:
+            #    print("move right...")
+        keys_pressed = pygame.key.get_pressed()
+        if keys_pressed[pygame.K_RIGHT]:
+            self.hero.speed = 2
+        elif keys_pressed[pygame.K_LEFT]:
+            self.hero.speed = -2
+        else:
+            self.hero.speed = 0
 
     def __check_collide(self):
         pass
@@ -58,6 +70,9 @@ class PlaneGame(object):
 
         self.enemy_group.update()
         self.enemy_group.draw(self.screen)
+
+        self.hero_group.update()
+        self.hero_group.draw(self.screen)
 
     @staticmethod
     def __game_over():

@@ -47,18 +47,31 @@ class Enemy(GameSprite):
         max_x = SCREEN_RECT.width - self.rect.width
         self.rect.x = random.randint(0, max_x)
 
-        pass
-
     def update(self):
         # 1. call farther,
         super().update()
 
         # 2. if out of screen ,delete enemy
         if self.rect.y >= SCREEN_RECT.height:
-            print("out of screen, delete enemy")
+            # print("out of screen, delete enemy")
             self.kill()
 
-        pass
-
     def __del__(self):
-        print("enemy die %s" % self.rect)
+        pass
+        # print("enemy die %s" % self.rect)
+
+
+class Hero(GameSprite):
+    def __init__(self):
+        # 1. call farther, set  image and speed
+        super().__init__("./images/me2.png", 0)
+        # 2.
+        self.rect.centerx = SCREEN_RECT.centerx
+        self.rect.bottom = SCREEN_RECT.bottom - 120
+
+    def update(self):
+        self.rect.x += self.speed
+        if self.rect.x < 0:
+            self.rect.x = 0
+        elif self.rect.right > SCREEN_RECT.right:
+            self.rect.right = SCREEN_RECT.right
