@@ -10,6 +10,9 @@ FRAME_PER_SEC = 60
 # create enemy timer
 CREATE_ENEMY_EVENT = pygame.USEREVENT
 
+# fire ire event
+HERO_FIRE_EVENT = pygame.USEREVENT + 1
+
 
 class GameSprite(pygame.sprite.Sprite):
     def __init__(self, image_name, speed=1):
@@ -75,3 +78,22 @@ class Hero(GameSprite):
             self.rect.x = 0
         elif self.rect.right > SCREEN_RECT.right:
             self.rect.right = SCREEN_RECT.right
+
+    def fire(self):
+        print("Fire... ... ...")
+
+
+class Bullet(GameSprite):
+    def __init__(self):
+        # 1.call farther,image and speed
+        super().__init__("./images/bullet1.png", -2)
+
+    def update(self):
+        # 1. call farther
+        super().update()
+        # 2.if out of screen
+        if self.rect.bottom < 0:
+            self.kill()
+
+    def __del__(self):
+        print("Bullet gone...")

@@ -15,6 +15,8 @@ class PlaneGame(object):
         self.__create_sprites()
         # 4. set timer event,create enemy 1s
         pygame.time.set_timer(CREATE_ENEMY_EVENT, 1000)
+        # 5.set hero fire ,0.5s
+        pygame.time.set_timer(HERO_FIRE_EVENT, 500)
 
     def __create_sprites(self):
         bg1 = Background()
@@ -51,6 +53,8 @@ class PlaneGame(object):
                 # print("enemy show up")
                 enemy = Enemy()
                 self.enemy_group.add(enemy)
+            elif event.type == HERO_FIRE_EVENT:
+                self.hero.fire()
             # elif event.type == pygame.KEYDOWN and event.key == pygame.K_RIGHT:
             #    print("move right...")
         keys_pressed = pygame.key.get_pressed()
