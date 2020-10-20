@@ -83,7 +83,7 @@ class Hero(GameSprite):
 
     def fire(self):
         # print("Fire... ... ...")
-       for i in (0,1,2):
+        for i in (0, 1, 2):
             # 1. create bullet sprite
             bullet = Bullet()
             # 2. position
@@ -91,7 +91,6 @@ class Hero(GameSprite):
             bullet.rect.centerx = self.rect.centerx
             # 3. add to group
             self.bullet.add(bullet)
-
 
 
 class Bullet(GameSprite):
