@@ -68,9 +68,11 @@ class Hero(GameSprite):
     def __init__(self):
         # 1. call farther, set  image and speed
         super().__init__("./images/me2.png", 0)
-        # 2.
+        # 2. position
         self.rect.centerx = SCREEN_RECT.centerx
         self.rect.bottom = SCREEN_RECT.bottom - 120
+        # 3. bullet sprite group
+        self.bullet = pygame.sprite.Group()
 
     def update(self):
         self.rect.x += self.speed
@@ -80,7 +82,16 @@ class Hero(GameSprite):
             self.rect.right = SCREEN_RECT.right
 
     def fire(self):
-        print("Fire... ... ...")
+        # print("Fire... ... ...")
+       for i in (0,1,2):
+            # 1. create bullet sprite
+            bullet = Bullet()
+            # 2. position
+            bullet.rect.bottom = self.rect.y - i * 20
+            bullet.rect.centerx = self.rect.centerx
+            # 3. add to group
+            self.bullet.add(bullet)
+
 
 
 class Bullet(GameSprite):

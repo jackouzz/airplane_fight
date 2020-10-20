@@ -78,6 +78,9 @@ class PlaneGame(object):
         self.hero_group.update()
         self.hero_group.draw(self.screen)
 
+        self.hero.bullet.update()
+        self.hero.bullet.draw(self.screen)
+
     @staticmethod
     def __game_over():
         print("GAME OVER")
